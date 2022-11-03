@@ -1,0 +1,72 @@
+Joao Henares
+
+I am now using student10 machine.
+
+jpireshe@student10:~/esc-courses/fa22-cse-20289.01/dropbox/python/m2c$ uptime
+ 20:19:07 up 26 days, 10:35, 21 users,  load average: 0.41, 0.71, 0.48
+
+Case 1) crack the encrypted password '2747f01cd0b445b2a488d8391640a7a4' with the regex [a-z]{5} with 1 thread, 2 threads, and 4 threads.
+    1 THREAD:
+        Found match: aabbb -> 2747f01cd0b445b2a488d8391640a7a4
+
+        real    0m4.843s
+        user    0m3.572s
+        sys     0m1.028s
+
+    2 THREADS:
+        Found match: aabbb -> 2747f01cd0b445b2a488d8391640a7a4
+
+        real    0m4.574s
+        user    0m3.472s
+        sys     0m0.862s
+        
+    4 THREADS:
+        Found match: aabbb -> 2747f01cd0b445b2a488d8391640a7a4
+
+        real    0m4.275s
+        user    0m3.461s
+        sys     0m1.005s
+
+Case 2) crack the encrypted password '8010fd0f87d3aaa0ea48aa78948c081e' with the regex [a-z]{3} with 1 thread, 2 threads, and 4 threads.
+    1 THREAD:
+        Found match: cmc -> 8010fd0f87d3aaa0ea48aa78948c081e
+
+        real    0m6.178s
+        user    0m4.258s
+        sys     0m1.145s
+    
+    2 THREADS:
+        Found match: cmc -> 8010fd0f87d3aaa0ea48aa78948c081e
+
+        real    0m4.913s
+        user    0m4.107s
+        sys     0m1.103s
+
+    4 THREADS:
+        Found match: cmc -> 8010fd0f87d3aaa0ea48aa78948c081e
+
+        real    0m4.667s
+        user    0m3.922s
+        sys     0m1.015s
+
+Case 3) crack the encrypted password '36a85c434b887cd59ccc0c03dd93d638' with the regex [a-zA-Z]{3}Castle with 1 thread, 2 threads, and 4 threads.
+    1 THREAD:
+        Found match: RedCastle -> 36a85c434b887cd59ccc0c03dd93d638
+
+        real    1m49.516s
+        user    1m30.698s
+        sys     0m27.211s
+
+    2 THREADS:
+        Found match: RedCastle -> 36a85c434b887cd59ccc0c03dd93d638
+
+        real    1m7.598s
+        user    1m13.651s
+        sys     0m22.376s
+    
+    4 THREADS:
+        Found match: RedCastle -> 36a85c434b887cd59ccc0c03dd93d638
+
+        real    0m44.115s
+        user    0m59.041s
+        sys     0m19.435s
