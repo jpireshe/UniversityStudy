@@ -1,0 +1,56 @@
+What your program is meant to do, from the user's perspective:
+
+There are two ways the user can run playlife.
+In the first way, the user runs without any other inputs than ./playlife. 
+This way, the user is prompted with instructions. Pressing a the user is prompted
+to imput coordinates for the cell the user wants to add. Pressing r does the
+opposite, killing the cell. N applies the rules only once, and p does it nonstop.
+Q is the button to quit. The user is free to do whatever he or she wants in the game
+with those conditions. 
+The second way is by running the game with a file, such as scene1.txt. This way, the program
+processes what is written in the file and plays the game nonstop, a mode developed to run
+archived inputs.
+
+How the program is structured, from the programmer's perspective:
+
+The program used modular compiling. The header has the function prototypes for the functions I used:
+printboard() and applyrules(). Their names are pretty much what they do; they print the board and apply
+the rules. 
+
+The main part starts by declaring the board as a 2d array of 40 elements. It also declares another
+board, named board mirror, used in applyrules(). I got nrows and ncols to be the sizes of the board.
+I also declard variables relative to user inputs and files (standard stuff for option processing).
+
+I then did a three options if statement. If there are no arguments run with the executable, option 1
+(the interactive mode) is called. It prompts the user for a choice. Inputting 'a' makes the program process 
+two new inputs, userrow and usercol. It then turns the board at the user's position on. Inputting 'r'
+turns the user's position off by the same method. Inputting 'n' calls applyurles() and printboard() once.
+Inputting 'p' does the same but nonstop, with a sleep() of 1 second so the user can see what is happening.
+I tried to use usleep() but it was too fast no matter how many ms i input.
+
+The second option is triggered if the user inputs a file name with the executable. In This option, the
+program opens and reads the file line by line. It first stores the first command in the line - 'a' or
+'p' - and processes it to see what it should do. If 'a' is in the first letter of the line, it reads the
+next two numbers and puts it in the board. If 'p' is the first letter of the line, it plays nonstop.
+
+The third option is an error, as the program must not be called with more than 2 arguments.
+
+lifefunc.c has two functions: 
+printboard() first clears the screen, then builds a frame where the board is put and prints the entire board,
+with nothing for the array having a 0 at the position, and x for the array having 1 or other number at the
+position. 
+applyrules() creates a board equal to the existing board, names it mirrorboard and uses it to check what should
+happen at each position of the board. If you open applyrules(), you will see it just checks a lot of conditions
+and decides what to do based on the rules of the game. Each condition is checked because the board has a lot of 
+special cases (the four corners had to be programmed as 4 special cases - each of them with three blocks to check -
+the borders were 4 other cases - each of them with five blocks to check - and the most normal case was the middle
+part - with 8 blocks to check). If less than two cells or more than 3 were alive, the cells would surely die or stay dead - so, 
+i just set board[irow][icol] to 0. If two were alive, the cells would stay as they are, so i did nothing. If three were
+alive, the cells would either stay or become alive - so, i just set board[irow][icol] to 1
+
+How you evaluated the program for correctness:
+
+To evaluate the program for correctness, I ran the program in both modes. In the first mode, I added and removed a cell to check if
+they worked - they did. Then, I did some setups (at the middle and at the corners) and applied rules to check if it worked - and
+it did. I used p with a glider I created and checked it worked. To check the scenes mode worked, I just created a bunch of scenes and compared
+with what happens from the wikipedia page of the game, and the output was identical.

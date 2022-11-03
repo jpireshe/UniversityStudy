@@ -1,0 +1,9 @@
+REPORT - Joao Henares
+CSE 20311.01 - ND 2022
+Made to understand what was done in lab 3
+
+From the user's perspective, menucalc.c is very simple. The program first opens a menu, prompting the user to input either 0 to quit, 1 to add, 2 to subtract, 3 to multiply or 4 to divide. Entering one of these options, the user is then prompted to input the two numbers to be operated (the number to operate on first, and the number to operate it second). The program then gives the user the output and reopens the menu. This keeps going until the user inputs 0.
+
+Internally, the program became a mix of functions with the main() part controlling their use. Initially, main() called just one funtion and returned 0, which made the program feel weird. Thus, I decided to turn that one function into main(). The program starts with a while loop that creates the menu prompt until the user inputs 0. Inside the while loop, the program decides what to operate using a switch statement, using one case for each operation (and a default of "this input is not valid" for other cases). In each case, the program gets the numbers using gernumbers() (a function to scan something basically) and numbera() or numberb() (to prompt the user to input something). It then uses a function to compute the numbers' addition, subtraction, multiplication or division and returns it, restarting the while loop.
+
+I verified the output of the program first by starting it and inputting 5 in the menu. It indeed prompted that this was not an option. Then, I tested the four operations three times each: with integers, with one real number, and with a negative number. Finally, I input 0 in the division to see if the program checked for 0 in this case, and it showed that it was not possible to divide by 0.

@@ -1,0 +1,49 @@
+report by joao henares
+cse 20311.01 - nd 2022
+
+======================== how the program from Part 2 works from the user perspective: ======================================
+
+Usastates is an interactive states database. The user is prompted to input a series of options.
+Inputting 1 all states are listed. Inputting 2, the user must input an abbreviation. By doing this,
+all of the state that has this abbreviation's information is displayed. Inputting 3 does the same as 2, but
+does that using the state's name. Inputting 4 or 5 does the same but displays only the capital. 6 asks for 
+year input, and outputs any states that joined in this year. 7 gives a chronological list of years in which
+states joined the US, and which ones joined in which year. 8 quits
+
+======================================= how the program works internally ====================================================
+
+the program starts by getting file data, either on user input or on running the executable. It uses strtok to break the
+lines into individual information. Then, it stores all the data in an array of structs named states. It then uses function
+printmenu on a while loop (which ends when the user inputs 8) to print the menu (using printf) and reading the user input. 
+It processes the user input through a switch statement, and each case calls for one function (or just breaks, in case the user 
+wants to quit).
+
+Function for case 1 iterates the array and prints information.
+
+Function for case 2 gets the state abbreviation using scanf() and iterates the array. If any of the structs' abbreviation
+is the same as the user's, it prints the input.
+
+Function for case 3 works equally, but gets state name with fgets() (because there are states with more than one name)
+
+Case 4 does the same as case 2, but lists only the capital's name
+
+Case 5 does the same as 3, but lists only the capital's name
+
+Case 6 gets the year from the user and iterates the array. If any of the array's structs has the same year as the user's year, 
+it prints the state name.
+
+Case 7 does a for loop from 0 to 2100 (to simulate this world's years). For each year, it iterates the struct array and checks if the
+year is the same as the for loop variable. If it is, it prints the state name. To not print the same year number multiple times,
+i used a control variable (iprinted) and did some if statements and formatted output accordingly.
+
+This is all for this program.
+
+======================== how you verified that the output of the program is correct: ======================================
+
+I started the program without nothing. Input the file name and listed all the 50 states. Both of these work. 
+I then ran the executable with the file name. Listed the states. All 50 were there. If i input the wrong file name
+or more than 1, i get an error message. File I/O works. I tested input 2 by using a valid abbreviation in lower
+case (ny, to test that lowercase didn't matter) and an invalid one (WK). NY displayed New York's info. WK gave an error message. 
+I did the same method with input 3, using "new york" and "amazonia" to check it worked only when it should. The same
+method was used to test 4 and 5. I tested 6 by putting 1959 (got alaska and hawaii) and 2000 (no one). I verified
+7 by checking with the file's years. I then quit with 8.

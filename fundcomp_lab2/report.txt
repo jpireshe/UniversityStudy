@@ -1,0 +1,15 @@
+LAB REPORT - LAB 2
+CSE 20311.01 - JOAO HENARES
+PURPOSE: REGISTER WHAT WAS DONE
+
+This report is about the graph.c program. From the user's perspective, this program is non-interactive (there is no input or output, it just plots a graph). The user runs the program and it plots the x values, y values and a graphic representation of y = abs(10*cos(x)). 
+
+Internally, the program begins by creating a header for the functiom (plot for function: ). Then, I created loop variables: ix (the loop count that also works for x value), y (the y value), g and iy (used to simulate y inside a nested for loop and as the nested for loop variable, respectively). I also declared max and min variables: xmax, xmin, ymax and ymin. 
+
+Then, I began the outer loop to compute and print y and x. I had to make y always positive (and I used an if statement to do that), and had to make g an integer part of y (because I was going to use it in a for loop, which should not be done with non-integer variables). I created a base # so the plot would always have a point.
+
+I did the nested loop to create the plot, printing one extra # for 1 unit value that g (rounded integer part of y) had, and ended the line to reiterate the loop.
+
+I computed ymin and ymax at the end of each loop using if statements: if the current ymax was less than the current y, the current y became the new ymax. If the current ymin was more than the current y, the current y became the new ymin. I printed the maxes.
+
+I checked for correctness by using an online plotter (and inputing my function) and using a calculator to check if the values were correct. Everything worked.

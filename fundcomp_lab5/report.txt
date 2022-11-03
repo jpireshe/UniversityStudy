@@ -1,0 +1,20 @@
+Report of Lab 5 - Joao Henares
+CSE 20311.01 - made to understand what was done in this last lab
+
+From the user's perspective, mysayings.c works as a sayings manager. The user runs the program and is prompted to input the name of the file he or she wants to work with. After connecting to the desired file, the user has 5 choices. 1 to show all sayings, 2 to enter a new saying (but without saving it) to the list of sayings, 3 to list sayings that have a given word, 4 to save all sayings that have either been opened or created in a new file (named by the user) and 5 to quit. The user choses options and inputs as he or she wants to.
+
+Internally, the program is big. I started by creating 2 file pointers: one to the file to be read, another to the file that may or may not be created in option 4. I got the file name with user input, and opened the user file (checking for its existence). I created a vector of phrases, and a counter for the number of sayings. I extrected each of the sayings from the file to be loaded using the while(1) loop. I went to create a menu. I created all the variables i needed: userchoice for a menu controller, char newfilename for the name of the file for option 4, char word for option 3. There were also 2 ints (foundword and loopcontrol) to check if the word was found. I print the menu while the user choice is not 5 and prompted the user for an input. Then, I created an if statement for each case.
+
+In case 1, i used a for loop to print all the phrases in the phrases vector, one at a time.
+
+In case 2, I increased the count of phrases (to not let it affect the other choices) and used
+fgets to get the phrase directly into the vector. 
+
+In case 3, I got the word to be looked for, and iterated through each saying of my 2d
+sayings array. I used strstr() to check if the word was in the phrase, and printed it in case it was.
+
+In case 4, I asked the filename for the user, and opened a new file with this name. I checked for invalid files (just in case) and then put every element of the phrases vector into the file using a for loop and fputs().
+
+In case 5, I just broke the program, and in other cases printed it was not a valid option. 
+
+I tested the output by running my program at the same time I ran the professor's executable. I first input the name of an unexisting file, and it shut the program down. I entered 1 and all sayings from my "startup.txt" file were visible. I pressed 2 and input a new saying. I then pressed one to check if the new saying was there, and it was. I pressed 3 and chose the word "new" to input. The only phrase with the word new was output, so 3 works. I pressed 4 and created a new file, with all the sayings. I then opened it and checked; it had all the sayings I input and had already in my startup.txt file (this new file is in part2 directory, and is named "new.txt"). I then quit with 5.
