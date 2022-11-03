@@ -1,0 +1,11 @@
+10
+Alex 300 75
+Tessa 1000 54
+Sid 200 44
+Steve 400 88
+Amy 1200 62
+Anna 550 32
+Amy 640 36
+Sid 240 82
+Tim 790 36
+Tom 540 20
